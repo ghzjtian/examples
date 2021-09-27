@@ -22,6 +22,7 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
+    "debug": "egg-bin debug",
     "autod": "autod"
   },
   "ci": {

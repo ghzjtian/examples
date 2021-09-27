@@ -17,6 +17,7 @@
     "start": "node index.js",
     "dev": "egg-bin dev",
     "test": "egg-bin test",
+    "debug": "egg-bin debug",
     "autod": "autod"
   }
 }

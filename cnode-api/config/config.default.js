@@ -8,5 +8,11 @@ module.exports = appInfo => {
 
   config.middleware = [ 'errorHandler' ];
 
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
+
   return config;
 };
