@@ -25,6 +25,7 @@
     "cov": "egg-bin cov",
     "ci": "npm run cov",
     "autod": "autod",
+    "debug": "egg-bin debug",
     "sequelize": "sequelize --"
   },
   "author": "Qi Yu <njuyuqi@gmail.coom>",

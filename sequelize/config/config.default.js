@@ -15,5 +15,12 @@ module.exports = appInfo => {
     password: 'mysql1230',
   };
 
+  // 开发过程中，关闭 csrf 保护
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
+
   return config;
 };

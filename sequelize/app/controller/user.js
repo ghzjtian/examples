@@ -10,7 +10,9 @@ class UserController extends Controller {
       limit: ctx.helper.parseInt(ctx.query.limit),
       offset: ctx.helper.parseInt(ctx.query.offset),
     };
-    ctx.body = await ctx.service.user.list(query);
+
+    const result = await ctx.service.user.list(query);
+    ctx.body = result;
   }
 
   // Get one
