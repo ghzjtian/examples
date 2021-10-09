@@ -24,9 +24,18 @@ class UserController extends Controller {
   // Create one, post method
   async create() {
     const ctx = this.ctx;
-    const user = await ctx.service.user.create(ctx.request.body);
-    ctx.status = 201;
-    ctx.body = user;
+    try {
+      const user = await ctx.service.user.create(ctx.request.body);
+      ctx.status = 201;
+      ctx.body = user;
+
+    } catch (err) {
+      let errorDetail = { code: 1001, message: err.toString() };
+      if (err.name == 'SequelizeDatabaseError') {
+        errorDetail = { code: 1002, message: err?.message };
+      }
+      throw new Error(JSON.stringify(errorDetail));
+    }
   }
 
   async update() {
