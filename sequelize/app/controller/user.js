@@ -30,11 +30,12 @@ class UserController extends Controller {
       ctx.body = user;
 
     } catch (err) {
-      let errorDetail = { code: 1001, message: err.toString() };
       if (err.name == 'SequelizeDatabaseError') {
-        errorDetail = { code: 1002, message: err?.message };
+        const errorDetail = { code: 1002, message: err?.message };
+        throw new Error(JSON.stringify(errorDetail));
+      } else {
+        throw err;
       }
-      throw new Error(JSON.stringify(errorDetail));
     }
   }
 

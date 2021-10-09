@@ -38,7 +38,12 @@ module.exports = appInfo => {
     // Header: Accept -> application/json
     json(err, ctx) {
       // json hander
-      ctx.body = JSON.parse(err.message);
+      if (IsJsonString(err?.message)) {
+        ctx.body = JSON.parse(err?.message);
+      } else {
+        // Default error response.
+        ctx.body = { code: 1001, message: err?.message };
+      }
       ctx.status = 500;
     },
     // jsonp(err, ctx) {
@@ -48,3 +53,12 @@ module.exports = appInfo => {
 
   return config;
 };
+
+function IsJsonString(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
