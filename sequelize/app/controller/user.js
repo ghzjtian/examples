@@ -21,6 +21,12 @@ class UserController extends Controller {
     ctx.body = await ctx.service.user.find(ctx.helper.parseInt(ctx.params.id));
   }
 
+  // Get one
+  async findOrCreateByName() {
+    const ctx = this.ctx;
+    ctx.body = await ctx.service.user.findOrCreate(ctx.query.name);
+  }
+
   // Create one, post method
   async create() {
     const ctx = this.ctx;
@@ -39,6 +45,10 @@ class UserController extends Controller {
     }
   }
 
+  /**
+   * Method: PUT
+   * API: users/11
+   */
   async update() {
     const ctx = this.ctx;
     const id = ctx.helper.parseInt(ctx.params.id);
@@ -46,6 +56,10 @@ class UserController extends Controller {
     ctx.body = await ctx.service.user.update({ id, updates: body });
   }
 
+  /**
+   * Method: DELETE
+   * API: users/10
+   */
   async destroy() {
     const ctx = this.ctx;
     const id = ctx.helper.parseInt(ctx.params.id);
